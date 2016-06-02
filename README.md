@@ -43,3 +43,26 @@ The `register` static method of `Notification` actually returns a `NotificationT
 
 You may post notifications using `MyNotificationClass.post(parameters)`. But before this you need to implement `static func note(params:P) throws -> NSNotification`, a function that generates the corresponding `NSNotification` from parameters.
 
+Although it does not make sense to manually post a keyboard notification, the `KeyboardAppeared` may be extended as follows to allow manual posting:
+
+```swift
+final class KeyboardAppeared: Notification {
+    static let name = UIKeyboardDidShowNotification
+    static func parameters(note: NSNotification) throws -> (beginFrame:CGRect,endFrame:CGRect) {
+        let beginFrame = (note.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() ?? CGRectNull
+        let endFrame = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() ?? CGRectNull
+        return (beginFrame,endFrame)
+    }
+    static func note(params:(beginFrame:CGRect,endFrame:CGRect)) throws -> NSNotification {
+        return NSNotification(
+            name: name,
+            object: nil,
+            userInfo: [
+                UIKeyboardFrameBeginUserInfoKey:NSValue(CGRect: params.beginFrame),
+                UIKeyboardFrameEndUserInfoKey:NSValue(CGRect: params.endFrame)
+            ]
+        )
+    }
+}
+```
+

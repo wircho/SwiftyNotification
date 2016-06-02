@@ -53,7 +53,7 @@ final class KeyboardAppeared: Notification {
         let endFrame = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() ?? CGRectNull
         return (beginFrame,endFrame)
     }
-    static func note(params:(beginFrame:CGRect,endFrame:CGRect)) throws -> NSNotification {
+    static func note(parameters:(beginFrame:CGRect,endFrame:CGRect)) throws -> NSNotification {
         return NSNotification(
             name: name,
             object: nil,

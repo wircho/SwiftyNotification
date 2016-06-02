@@ -1,5 +1,5 @@
 # SwiftyNotification
-A type-safe approach to NSNotifications
+A type-safe approach to NSNotification
 
 ## Installation
 

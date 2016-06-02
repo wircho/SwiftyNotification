@@ -37,7 +37,7 @@ KeyboardAppeared.register(self) {
 
 ### 3. Unregistering Observers (Optional)
 
-The `register` static method of `Notification` actually returns a `NotificationToken`. You may store this token in a safe place and unregister the closure by doing `token.cancel()`.
+The `register` static method of `Notification` actually returns a `NotificationToken`. You may store this token anywhere and unregister the closure by doing `token.cancel()`.
 
 ### 4. Posting Notifications (Optional)
 

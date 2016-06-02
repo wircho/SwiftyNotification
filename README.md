@@ -58,8 +58,8 @@ final class KeyboardAppeared: Notification {
             name: name,
             object: nil,
             userInfo: [
-                UIKeyboardFrameBeginUserInfoKey:NSValue(CGRect: params.beginFrame),
-                UIKeyboardFrameEndUserInfoKey:NSValue(CGRect: params.endFrame)
+                UIKeyboardFrameBeginUserInfoKey:NSValue(CGRect: parameters.beginFrame),
+                UIKeyboardFrameEndUserInfoKey:NSValue(CGRect: parameters.endFrame)
             ]
         )
     }

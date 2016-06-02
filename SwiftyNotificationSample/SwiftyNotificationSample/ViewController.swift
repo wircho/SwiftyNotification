@@ -36,6 +36,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var dismissKeyboardButton: UIButton!
     
     @IBAction func dismissKeyboard(sender: AnyObject) {
         textField.resignFirstResponder()
@@ -50,16 +51,20 @@ class ViewController: UIViewController {
         // No need to unregister, since that will happen
         // once the view controller gets released
         
+        dismissKeyboardButton.enabled = false
+        
         KeyboardAppeared.register(self) {
             innerSelf,params in
             
             innerSelf.label.text = "Keyboard Appeared\nFrom \(params.beginFrame)\nTo \(params.endFrame)"
+            innerSelf.dismissKeyboardButton.enabled = true
         }
         
         KeyboardDisappeared.register(self) {
             innerSelf,params in
             
             innerSelf.label.text = "Keyboard Disappeared\nFrom \(params.beginFrame)\nTo \(params.endFrame)"
+            innerSelf.dismissKeyboardButton.enabled = false
         }
     }
 }

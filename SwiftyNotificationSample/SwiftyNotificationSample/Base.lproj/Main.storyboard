@@ -53,6 +53,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dismissKeyboardButton" destination="dwi-Vp-QW6" id="Rmr-XM-eb3"/>
                         <outlet property="label" destination="AlO-wY-3Do" id="kyv-ZU-X9h"/>
                         <outlet property="textField" destination="e1U-2m-OmY" id="WxB-AX-FLM"/>
                     </connections>

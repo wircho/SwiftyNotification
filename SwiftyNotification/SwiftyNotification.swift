@@ -15,9 +15,9 @@ extension Notification {
     public static func note(params:P) throws -> NSNotification {
         throw NotificationError.MethodNotImplemented
     }
-    public static func register<T:AnyObject>(listener:T, object:AnyObject? = nil, closure:(T,P)->Void) -> NotificationToken {
+    public static func register<T:AnyObject>(listener:T, object:AnyObject? = nil, queue: NSOperationQueue? = nil, closure:(T,P)->Void) -> NotificationToken {
         var token:NotificationToken? = nil
-        let observer = NSNotificationCenter.defaultCenter().addObserverForName(name, object: object, queue: nil) {
+        let observer = NSNotificationCenter.defaultCenter().addObserverForName(name, object: object, queue: queue) {
             note in
             guard let actualToken = token else { return }
             guard let listener = actualToken.listener as? T else {
